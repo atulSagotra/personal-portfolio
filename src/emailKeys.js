@@ -3,4 +3,4 @@ const keys = {
   TEMPLATE_ID: `template_zwnqwbd`, 
   PUBLIC_KEY: `iRMXHgahQbQK-x8BK`
 }
-export default keys
+export default keys;
