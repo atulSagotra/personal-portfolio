@@ -1,20 +1,27 @@
-import React, { useState, useEffect } from "react";
-import Header from "./components/Header";
-import Hero from "./sections/Hero";
-import Terminal from "./components/Terminal";
-import About from "./sections/About";
-import Experience from "./sections/Experience";
-import Skills from "./sections/Skills";
-import Contact from "./sections/Contact";
-import useWebMCP from "./hooks/useWebMCP";
+"use client";
 
-export default function App() {
+import React, { useState, useEffect } from "react";
+import Header from "../components/Header";
+import Hero from "../sections/Hero";
+import Terminal from "../components/Terminal";
+import ProjectsShowcase from "../components/ProjectsShowcase";
+import ClientAuditor from "../components/ClientAuditor";
+import PerformanceStats from "../components/PerformanceStats";
+import About from "../sections/About";
+import Experience from "../sections/Experience";
+import Skills from "../sections/Skills";
+import Contact from "../sections/Contact";
+import useWebMCP from "../hooks/useWebMCP";
+
+export default function Home() {
   useWebMCP();
-  
+
   const [theme, setTheme] = useState(() => {
     try {
-      return localStorage.getItem("theme") || "dark";
-
+      if (typeof window !== "undefined") {
+        return localStorage.getItem("theme") || "dark";
+      }
+      return "dark";
     } catch (_) {
       return "dark";
     }
@@ -30,12 +37,12 @@ export default function App() {
 
     if (isDark) {
       root.classList.add("dark");
-      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#09090b");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#060608");
     } else {
       root.classList.remove("dark");
-      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f6f6f9");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f5f5f9");
     }
-    
+
     try {
       localStorage.setItem("theme", theme);
     } catch (_) {}
@@ -44,16 +51,16 @@ export default function App() {
   // System theme changes listener
   useEffect(() => {
     if (theme !== "system") return;
-    
+
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const handleChange = () => {
       const root = document.documentElement;
       if (mediaQuery.matches) {
         root.classList.add("dark");
-        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#09090b");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#060608");
       } else {
         root.classList.remove("dark");
-        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f6f6f9");
+        document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f5f5f9");
       }
     };
 
@@ -63,7 +70,8 @@ export default function App() {
 
   // Fallback Scroll-Reveal Intersection Observer
   useEffect(() => {
-    // Only register JS scroll fallback if native CSS Scroll-Driven animations aren't supported
+    if (typeof window === "undefined") return;
+
     if (window.CSS && CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) {
       return;
     }
@@ -89,14 +97,14 @@ export default function App() {
 
   return (
     <>
-      <div className="bg-grid"></div>
-      <div className="ambient-glow"></div>
-      
       <Header theme={theme} setTheme={setTheme} />
       
       <main style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1.5rem 8rem 1.5rem" }}>
         <Hero />
         <Terminal />
+        <ProjectsShowcase />
+        <ClientAuditor />
+        <PerformanceStats />
         <About />
         <Experience />
         <Skills />

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import profile_photo from "../Static/Images/profile_photo.png";
+const profile_photo = "/profile_photo.png";
 import { FaGithub, FaLinkedin, FaEnvelope, FaFileDownload } from "react-icons/fa";
 
 export default function Hero() {
