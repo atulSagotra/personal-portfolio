@@ -8,7 +8,7 @@ export default function About() {
     {
       icon: <FaGraduationCap />,
       title: "Education",
-      desc: "B.Tech in Computer Science Engineering from Chandigarh Group of CGC.",
+      desc: "PGDBM from NMIMS & B.Tech in CS Engineering from Chandigarh Group of CGC.",
     },
     {
       icon: <FaCode />,
