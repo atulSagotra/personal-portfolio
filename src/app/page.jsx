@@ -7,7 +7,6 @@ import Terminal from "../components/Terminal";
 import ProjectsShowcase from "../components/ProjectsShowcase";
 import ClientAuditor from "../components/ClientAuditor";
 import PerformanceStats from "../components/PerformanceStats";
-import About from "../sections/About";
 import Experience from "../sections/Experience";
 import Skills from "../sections/Skills";
 import Contact from "../sections/Contact";
