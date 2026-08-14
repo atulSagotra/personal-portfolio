@@ -107,11 +107,51 @@ export default function Hero() {
             <span className="typewriter" style={{ color: "var(--fg-color)", fontWeight: "600" }}>{text}</span>
           </h2>
           
-          <p style={{ color: "var(--fg-muted)", fontSize: "1.08rem", lineHeight: "1.65", maxWidth: "620px", marginBottom: "3rem" }}>
-            A results-driven Frontend Architect and Engineering Lead with 6+ years of professional experience. 
-            I specialize in crafting high-performance React/Next.js systems, scaling micro-frontend architectures, 
-            and delivering robust enterprise software solutions.
-          </p>
+          <div style={{ display: "flex", flexDirection: "column", gap: "1.25rem", maxWidth: "660px", marginBottom: "2.5rem" }}>
+            <p style={{ color: "var(--fg-color)", fontSize: "1.08rem", lineHeight: "1.7", margin: 0 }}>
+              Hello! I'm <strong>Atul Sagotra</strong>, a software engineer based in <strong>Brampton, Ontario, Canada</strong>. 
+              My passion is writing clean, efficient code that runs flawlessly across a variety of devices. 
+              I specialize in the JavaScript/TypeScript ecosystem, with extensive focus on building responsive frontends 
+              using <strong>React</strong> and <strong>Next.js</strong>.
+            </p>
+            
+            <p style={{ color: "var(--fg-muted)", fontSize: "0.98rem", lineHeight: "1.65", margin: 0 }}>
+              Currently, I am working as a <strong>Team Lead</strong> at{" "}
+              <a href="https://www.chargerlogistics.com/" target="_blank" rel="noopener noreferrer" className="inline-link" style={{ fontWeight: 700, color: "var(--primary-color)" }}>
+                Charger Logistics
+              </a>{" "}
+              in Brampton, Canada. Here, I lead application development and architecture, collaborating directly with product managers, 
+              business analysts, DevOps, and solution architects, while heavily leveraging AI models (like Claude) to architect and deliver 
+              mission-critical logistics platforms.
+            </p>
+            
+            <p style={{ color: "var(--fg-muted)", fontSize: "0.98rem", lineHeight: "1.65", margin: 0 }}>
+              Before moving to Canada, I served as a Senior Web Developer at <strong>Material Plus</strong> in Gurugram, building client-side and 
+              dashboard platforms for <strong>SportsClips</strong> and a large-scale CMS for <strong>Nasdaq Nordic</strong>. Prior to that, 
+              I led frontend engineering for the B2C mobile-web insurtech ecosystem at <strong>Pasarpolis</strong>.
+            </p>
+
+            {/* Academic Qualifications */}
+            <div style={{ marginTop: "0.75rem", borderTop: "1px solid var(--card-border)", paddingTop: "1rem" }}>
+              <span style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "var(--primary-color)", textTransform: "uppercase", letterSpacing: "0.08em", display: "block", marginBottom: "0.75rem" }}>
+                // EDUCATION & CREDENTIALS
+              </span>
+              <div style={{ display: "flex", gap: "2rem", flexWrap: "wrap" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <span style={{ color: "var(--primary-color)", fontSize: "1rem", display: "inline-flex" }}>🎓</span>
+                  <span style={{ fontSize: "0.85rem", color: "var(--fg-muted)" }}>
+                    <strong>PGDBM</strong> (Business Management) / <strong>NMIMS</strong>
+                  </span>
+                </div>
+                <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+                  <span style={{ color: "var(--primary-color)", fontSize: "1rem", display: "inline-flex" }}>🎓</span>
+                  <span style={{ fontSize: "0.85rem", color: "var(--fg-muted)" }}>
+                    <strong>B.Tech</strong> (Computer Science) / <strong>CGC</strong>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
   
           {/* Action buttons */}
           <div className="hero-actions" style={{ display: "flex", gap: "1.5rem", alignItems: "center" }}>

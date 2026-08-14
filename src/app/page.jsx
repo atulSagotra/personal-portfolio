@@ -105,20 +105,20 @@ export default function Home() {
       {/* Minimalist vertical section index tracker */}
       <div className="vertical-nav" style={{ position: "fixed", right: "2.5rem", top: "50%", transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: "1.25rem", zIndex: 100, mixBlendMode: "difference" }}>
         <a href="#home" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>01 / INTRO</a>
-        <a href="#experience" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>02 / WORK</a>
-        <a href="#performance" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>03 / VITALS</a>
-        <a href="#ai-auditor" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>04 / AUDIT</a>
-        <a href="#contact" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>05 / TALK</a>
+        <a href="#ai-auditor" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>02 / CONSOLE</a>
+        <a href="#projects" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>03 / WORKS</a>
+        <a href="#experience" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>04 / WORK</a>
+        <a href="#performance" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>05 / VITALS</a>
+        <a href="#contact" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>06 / TALK</a>
       </div>
 
       <main style={{ maxWidth: "980px", margin: "0 auto", padding: "0 2rem 8rem 2rem", position: "relative", zIndex: 1 }}>
         <Hero />
+        <ClientAuditor />
         <ProjectsShowcase />
-        <About />
         <Experience />
         <Skills />
         <PerformanceStats />
-        <ClientAuditor />
         <Terminal />
         <Contact />
       </main>

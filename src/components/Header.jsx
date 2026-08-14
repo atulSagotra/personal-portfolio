@@ -7,7 +7,7 @@ export default function Header({ theme, setTheme }) {
 
   // Monitor which section is in view
   useEffect(() => {
-    const sections = ["home", "about", "experience", "skills", "contact"];
+    const sections = ["home", "experience", "skills", "contact"];
     const observerOptions = {
       root: null,
       rootMargin: "-40% 0px -50% 0px", // Trigger when section is in the middle of screen
@@ -54,7 +54,6 @@ export default function Header({ theme, setTheme }) {
 
   const navItems = [
     { id: "home", label: "Home", icon: <FaCode /> },
-    { id: "about", label: "About", icon: <FaUser /> },
     { id: "experience", label: "Experience", icon: <FaBriefcase /> },
     { id: "skills", label: "Skills", icon: <FaGraduationCap /> },
     { id: "contact", label: "Contact", icon: <FaEnvelope /> },
