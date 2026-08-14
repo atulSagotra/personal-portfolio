@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from "react";
-import { FiSend, FiCpu, FiMessageSquare, FiTrendingUp } from "react-icons/fi";
+import { FiSend } from "react-icons/fi";
 
 const QUICK_PROMPTS = [
-  { label: "What is your main tech stack?", query: "tech_stack" },
-  { label: "Are you open to contract work?", query: "availability" },
-  { label: "Tell me about your Tapinsure project.", query: "tapinsure" },
-  { label: "What is your education/location?", query: "bio" }
+  { label: "Can you lead large-scale project architecture?", query: "large_projects" },
+  { label: "How do you define workflows for engineering teams?", query: "team_workflows" },
+  { label: "How do you deliver projects in shorter timeframes?", query: "accelerated_delivery" },
+  { label: "What is your core frontend tech stack?", query: "tech_stack" }
 ];
 
 export default function ClientAuditor() {
@@ -20,10 +20,13 @@ export default function ClientAuditor() {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const messagesEndRef = useRef(null);
+  const chatBodyRef = useRef(null);
 
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const el = chatBodyRef.current;
+    if (el) {
+      el.scrollTop = el.scrollHeight;
+    }
   }, [messages, isTyping]);
 
   const handleSend = (textToSend) => {
@@ -34,58 +37,80 @@ export default function ClientAuditor() {
     setInput("");
     setIsTyping(true);
 
-    // Simulate AI thinking and executing WebMCP tools
     setTimeout(() => {
       let responseText = "";
       let logs = [];
-
       const query = textToSend.toLowerCase();
 
-      if (query.includes("tech") || query.includes("skill") || query === "tech_stack") {
+      if (query.includes("large") || query.includes("scale") || query.includes("big") || query === "large_projects") {
         logs = [
-          "⚡ Initializing WebMCP tool call...",
-          "🔍 Executing tool: get_technical_skills()",
-          "📦 Loaded skills payload: { frontend: 7, backend: 3, tools: 3 }"
+          "WebMCP: Querying architecture history...",
+          "WebMCP: Found 3 large-scale system migrations"
         ];
-        responseText = `Atul is a specialized frontend developer. His core stack includes:
-• **Frontend**: ReactJS, NextJS, JavaScript (ES6+), HTML5, CSS3/SCSS, Styled Components, Tailwind CSS.
-• **Backend & APIs**: Python, Django, REST API Integration.
-• **Tooling**: Webpack (Module Federation), Micro-frontends, Git, Vercel deployments.`;
+        responseText = `Yes, Atul has extensive experience leading large-scale projects:
+• **Micro-frontend Architecture**: Engineered modular systems using Webpack Module Federation, breaking massive monolothic applications into decoupled sub-apps to scale engineering capacity.
+• **High-Concurrence Logistical Boards**: Architected mission-critical real-time logistics Orderboard, Tripboard, and Fleet inventories at Charger Logistics, supporting thousands of drivers and dispatchers.
+• **Scalable Client Booking Apps**: Delivered salon client booking apps and merchant dashboards for SportsClips from scratch, supporting high transaction volumes and real-time operations.`;
+      }
+      else if (query.includes("workflow") || query.includes("team") || query === "team_workflows") {
+        logs = [
+          "WebMCP: Accessing processes playbook...",
+          "WebMCP: Process matches 'AGILE_AI_HYBRID'"
+        ];
+        responseText = `Atul establishes workflows that align engineering teams and accelerate roadmap delivery:
+• **AI-Augmented Execution**: Designs workflows using AI tools (Claude, Cursor, custom team context pools) effectively, boosting developer delivery speed by 30-40%.
+• **Module-Federated Deployments**: Establishes isolated build & deployment pipelines so sub-teams can deploy features independently without release bottlenecks.
+• **Mentorship & Quality Standards**: Structures developer onboarding, code review standards, and comprehensive automated test suites to ensure standard code quality.`;
+      }
+      else if (query.includes("short") || query.includes("duration") || query.includes("fast") || query.includes("time") || query.includes("accelerat") || query === "accelerated_delivery") {
+        logs = [
+          "WebMCP: Checking performance timelines...",
+          "WebMCP: Average delivery acceleration: +35%"
+        ];
+        responseText = `Atul specializes in accelerating engineering delivery times without compromising standard reliability:
+• **Modular UI Component Reusability**: Shipped ~70% of Pasarpolis' flagship B2C TAPINSURE mobile-web app in just 3 months by building a pre-scaffolded, modular design system.
+• **Pre-Coding Scoping**: Leverages AI models to perform dry-runs of edge cases and structure unit test mocks prior to code implementation.
+• **Automated CI/CD**: Tight DevOps alignment (Docker, Git, Webpack caching, Vercel) ensures clean pipeline execution to reduce testing overhead and deployment delays.`;
+      }
+      else if (query.includes("tech") || query.includes("skill") || query === "tech_stack") {
+        logs = [
+          "WebMCP: Executed get_technical_skills()",
+          "WebMCP: Returned 4 architecture categories, 14 lead variables"
+        ];
+        responseText = `Atul is an Engineering Team Lead and Frontend Architect. Core capability sets:
+• Frontend Architecture: React, Next.js, Micro-frontends (Module Federation), TypeScript, CSS/Design Systems.
+• AI Systems & Tooling: AI Agent Orchestration (Claude, Custom GPTs), AI-Driven Workflows (code generation, prompt structures), Custom Team AI Assistants.
+• Leadership & Workflows: Technical Scoping, Architecture Planning & Scoping, Mentorship, Team Workflows, Standardizing Code Quality.
+• Backend & DevOps: Node.js, Python, Databases (Firestore, PostgreSQL), REST APIs, CI/CD, Docker, Git.`;
       } 
       else if (query.includes("avail") || query.includes("contract") || query.includes("work") || query.includes("rate") || query === "availability") {
         logs = [
-          "⚡ Initializing WebMCP tool call...",
-          "🔍 Executing tool: get_developer_profile()",
-          "📦 Loaded availability state: 'ACTIVE_INTERVIEWING'"
+          "WebMCP: Executed get_developer_profile()",
+          "WebMCP: Availability state matches 'ACTIVE_INTERVIEWING'"
         ];
-        responseText = "Yes! Atul is currently open to new roles, freelance contract opportunities, and full-time senior/lead developer positions. He is located in Jammu, India, and is fully set up to work remotely for international clients. You can reach out directly via the contact form below or email him at **atulsagotra10@gmail.com**.";
+        responseText = "Yes! Atul is currently open to senior/lead developer roles, freelance contracts, and full-time employment. Located in Brampton, ON (Canada), and fully authorized to work locally or remotely. Contact: **atulsagotra774@gmail.com**.";
       } 
       else if (query.includes("tap") || query.includes("pasarp") || query === "tapinsure") {
         logs = [
-          "⚡ Initializing WebMCP tool call...",
-          "🔍 Executing tool: get_work_experience()",
-          "📦 Filtering history where company == 'Pasarpolis'"
+          "WebMCP: Executed get_work_experience() for company: 'Pasarpolis'"
         ];
-        responseText = `At Pasarpolis, Atul was the **Lead Front-end Engineer** for the B2C mobile web application (**TAPINSURE**).
-Key Achievements:
-• Developed and launched ~70% of the entire app within 3 months.
-• Designed micro-frontend modules that decreased release and deployment cycles by 40%.
-• Built high-performance pages, securing a 98/100 Lighthouse performance rating.`;
+        responseText = `At Pasarpolis, Atul was the Lead Front-end Engineer for TAPINSURE mobile-web app.
+Key achievements:
+• Shipped ~70% of Next.js frontend code from scratch in 3 months.
+• Structured micro-frontend modules reducing deployment times by 40%.
+• Delivered responsive layouts with 98/100 Lighthouse performance.`;
       } 
       else if (query.includes("bio") || query.includes("education") || query.includes("location") || query.includes("who is")) {
         logs = [
-          "⚡ Initializing WebMCP tool call...",
-          "🔍 Executing tool: get_developer_profile()",
-          "📦 Loaded profile data: Atul Sagotra"
+          "WebMCP: Executed get_developer_profile()"
         ];
-        responseText = "Atul Sagotra has 3+ years of experience leading frontend builds. He graduated with a B.Tech in Computer Science from the Chandigarh Group of Colleges. He is based in Jammu, India, and specializes in high-fidelity user interfaces, micro-frontends, and Vite/Next.js performance optimization.";
+        responseText = "Atul Sagotra: Engineering Lead with 6+ years of experience. Graduated B.Tech in CS from Chandigarh Group of Colleges. Currently located in Brampton, ON (Canada). Formerly at Charger Logistics, Material Plus, and Pasarpolis.";
       } 
       else {
         logs = [
-          "⚡ Initializing WebMCP fallback search...",
-          "🔍 Searching local profile context for matches..."
+          "WebMCP: Querying profile records..."
         ];
-        responseText = `Thanks for asking! Atul has 3+ years of frontend experience (NextJS/React) and led the TAPINSURE mobile app. For details, try clicking one of the quick prompts or contact him directly at **atulsagotra10@gmail.com**.`;
+        responseText = `Atul is an Engineering Team Lead and Frontend Architect with 6+ years of experience. He specializes in React/Next.js systems, AI-driven developer workflows, and team process optimizations. Contact: **atulsagotra774@gmail.com**.`;
       }
 
       setMessages((prev) => [
@@ -97,119 +122,119 @@ Key Achievements:
   };
 
   return (
-    <section id="ai-auditor" style={{ padding: "3rem 0 3rem 0" }}>
-      <div style={{ marginBottom: "3rem" }}>
-        <p className="text-gradient" style={{ fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", fontSize: "0.9rem" }}>
-          AI Integration
-        </p>
-        <h2 style={{ fontSize: "2.5rem", marginTop: "0.5rem" }}>Live WebMCP Profile Auditor</h2>
+    <section id="ai-auditor" className="scroll-reveal" style={{ padding: "6rem 0" }}>
+      
+      {/* Header */}
+      <div style={{ textAlign: "left", marginBottom: "4rem" }}>
+        <h2 className="reveal-mask" style={{ color: "var(--fg-muted)", fontFamily: "var(--font-mono)", letterSpacing: "0.15em", textTransform: "uppercase", fontSize: "0.72rem", fontWeight: "600", marginBottom: "0.5rem" }}>
+          <span>[ AI CAPABILITY AUDIT ]</span>
+        </h2>
+        <h3 style={{ fontSize: "2.8rem", fontWeight: "800", color: "var(--fg-color)", letterSpacing: "-0.02em" }}>MCP Agent.</h3>
       </div>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-        gap: "2.5rem"
-      }}>
-        {/* Left Side: Explanation */}
+      <div className="asymmetric-grid">
+        
+        {/* Left Column: Context info */}
         <div style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", marginBottom: "1rem" }}>
-            <FiCpu style={{ color: "var(--primary-color)", fontSize: "1.5rem" }} />
-            <h3 style={{ fontSize: "1.3rem", fontWeight: 700 }}>AI Agent-Ready Protocol</h3>
-          </div>
-          <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", lineHeight: "1.7", marginBottom: "1.5rem" }}>
-            This website is fully configured with the **Model Context Protocol (WebMCP)**. AI agents (like Gemini or Claude) browsing this site can discover and run local tools directly on the web page to audit Atul's capabilities.
+          <h4 style={{ fontSize: "1.1rem", fontWeight: "700", color: "var(--fg-color)", marginBottom: "1.25rem", fontFamily: "var(--font-mono)" }}>
+            // MODEL_CONTEXT_PROTOCOL
+          </h4>
+          <p style={{ color: "var(--fg-muted)", fontSize: "1.02rem", lineHeight: "1.7", marginBottom: "2.5rem" }}>
+            This website is fully configured with the **Model Context Protocol (WebMCP)**. AI agents crawling this portfolio can discover and invoke local profile tools in real-time to audit Atul's capabilities and work history.
           </p>
-          <div style={{ background: "var(--primary-glow)", borderLeft: "3px solid var(--primary-color)", padding: "1rem", borderRadius: "0 12px 12px 0", marginBottom: "1.5rem" }}>
-            <p style={{ fontSize: "0.85rem", color: "var(--primary-color)", fontWeight: 600, display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <FiTrendingUp /> For Recruiters & Clients:
-            </p>
-            <p style={{ fontSize: "0.85rem", color: "var(--fg-muted)", marginTop: "0.25rem" }}>
-              Test the AI's execution of Atul's tools in real time. Select a quick prompt or type your query in the widget.
-            </p>
-          </div>
-
-          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+          
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "0.6rem" }}>
             {QUICK_PROMPTS.map((p, idx) => (
               <button 
                 key={idx}
                 onClick={() => handleSend(p.label)}
                 disabled={isTyping}
                 style={{
-                  background: "var(--card-bg)",
-                  border: "1px solid var(--card-border)",
-                  borderRadius: "20px",
-                  padding: "0.5rem 1rem",
-                  fontSize: "0.8rem",
+                  background: "transparent",
+                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  borderRadius: "2px",
+                  padding: "0.6rem 1.1rem",
+                  fontSize: "0.72rem",
+                  fontFamily: "var(--font-mono)",
                   cursor: "pointer",
-                  color: "var(--fg-color)",
-                  transition: "background 0.2s"
+                  color: "var(--fg-muted)",
+                  transition: "all 0.3s ease"
                 }}
-                className="quick-prompt-btn"
+                className="quick-prompt-btn interactive-node"
               >
-                {p.label}
+                &gt; {p.label}
               </button>
             ))}
           </div>
         </div>
 
-        {/* Right Side: Chat Assistant */}
-        <div className="glass-card" style={{ display: "flex", flexDirection: "column", height: "450px", overflow: "hidden" }}>
-          {/* Top Panel */}
-          <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", borderBottom: "1px solid var(--card-border)", padding: "1.25rem" }}>
-            <FiMessageSquare style={{ color: "var(--primary-color)" }} />
-            <div>
-              <div style={{ fontSize: "0.9rem", fontWeight: 700 }}>Atul's WebMCP Agent</div>
-              <div style={{ fontSize: "0.75rem", color: "var(--success-color)", display: "flex", alignItems: "center", gap: "0.25rem" }}>
-                <span style={{ width: "6px", height: "6px", background: "var(--success-color)", borderRadius: "50%", display: "inline-block" }}></span>
-                Ready to Audit
-              </div>
-            </div>
+        {/* Right Column: Chat Dialog Box */}
+        <div 
+          className="glass-card"
+          style={{ 
+            display: "flex", 
+            flexDirection: "column", 
+            height: "440px", 
+            overflow: "hidden", 
+            borderRadius: "4px", 
+            border: "1px solid var(--card-border)",
+            background: "var(--card-bg)",
+            transition: "border-color 0.4s ease"
+          }}
+        >
+          {/* Tech Corners */}
+          <div className="grid-corner corner-tl"></div>
+          <div className="grid-corner corner-tr"></div>
+          <div className="grid-corner corner-bl"></div>
+          <div className="grid-corner corner-br"></div>
+
+          {/* Simple header */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid var(--card-border)", padding: "12px 1.5rem" }}>
+            <span style={{ fontSize: "0.7rem", fontWeight: 700, color: "var(--fg-color)", fontFamily: "var(--font-mono)", textTransform: "uppercase", letterSpacing: "0.05em" }}>
+              WebMCP Console
+            </span>
+            <span style={{ fontSize: "0.65rem", color: "var(--success-color)", fontFamily: "var(--font-mono)", display: "flex", alignItems: "center", gap: "6px" }}>
+              <span className="status-indicator"></span> ONLINE
+            </span>
           </div>
 
-          {/* Messages Area */}
-          <div style={{ flexGrow: 1, overflowY: "auto", padding: "1.25rem", display: "flex", flexDirection: "column", gap: "1rem" }}>
+          {/* Messages Console */}
+          <div 
+            ref={chatBodyRef}
+            style={{ flexGrow: 1, overflowY: "auto", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "1.25rem", background: "var(--bg-color)" }}
+          >
             {messages.map((m, idx) => (
               <div key={idx} style={{
                 alignSelf: m.sender === "user" ? "flex-end" : "flex-start",
                 maxWidth: "85%"
               }}>
-                {/* User Message */}
                 {m.sender === "user" ? (
                   <div style={{
-                    background: "var(--primary-color)",
-                    color: "white",
-                    padding: "0.75rem 1rem",
-                    borderRadius: "18px 18px 2px 18px",
-                    fontSize: "0.9rem"
+                    background: "var(--card-bg)",
+                    border: "1px solid var(--card-border)",
+                    color: "var(--fg-color)",
+                    padding: "0.6rem 1rem",
+                    borderRadius: "2px",
+                    fontSize: "0.85rem",
+                    fontFamily: "var(--font-mono)"
                   }}>
-                    {m.text}
+                    &gt; {m.text}
                   </div>
                 ) : (
-                  /* AI Message & Tool Logs */
-                  <div style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                  <div style={{ display: "flex", flexDirection: "column", gap: "0.4rem" }}>
                     {m.logs && m.logs.length > 0 && (
-                      <div style={{
-                        background: "rgba(0,0,0,0.2)",
-                        border: "1px solid var(--card-border)",
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.7rem",
-                        padding: "0.6rem",
-                        borderRadius: "8px",
-                        color: "var(--fg-muted)"
-                      }}>
+                      <div style={{ fontFamily: "var(--font-mono)", fontSize: "0.68rem", color: "var(--fg-muted)", borderLeft: "1px solid var(--card-border)", paddingLeft: "8px" }}>
                         {m.logs.map((log, lIdx) => (
                           <div key={lIdx}>{log}</div>
                         ))}
                       </div>
                     )}
                     <div style={{
-                      background: "var(--card-bg)",
-                      border: "1px solid var(--card-border)",
-                      color: "var(--fg-color)",
-                      padding: "0.75rem 1rem",
-                      borderRadius: "18px 18px 18px 2px",
-                      fontSize: "0.9rem",
-                      whiteSpace: "pre-line"
+                      color: "var(--fg-muted)",
+                      padding: "0.25rem 0",
+                      fontSize: "0.88rem",
+                      whiteSpace: "pre-line",
+                      lineHeight: "1.5"
                     }}>
                       {m.text}
                     </div>
@@ -219,40 +244,34 @@ Key Achievements:
             ))}
 
             {isTyping && (
-              <div style={{
-                alignSelf: "flex-start",
-                background: "var(--card-bg)",
-                border: "1px solid var(--card-border)",
-                padding: "0.75rem 1.25rem",
-                borderRadius: "18px",
-                display: "flex",
-                gap: "0.25rem",
-                alignItems: "center"
-              }}>
-                <span className="typing-dot" style={{ width: "6px", height: "6px", background: "var(--fg-muted)", borderRadius: "50%", display: "inline-block", animation: "bounce 1.4s infinite ease-in-out" }}></span>
-                <span className="typing-dot" style={{ width: "6px", height: "6px", background: "var(--fg-muted)", borderRadius: "50%", display: "inline-block", animation: "bounce 1.4s infinite ease-in-out 0.2s" }}></span>
-                <span className="typing-dot" style={{ width: "6px", height: "6px", background: "var(--fg-muted)", borderRadius: "50%", display: "inline-block", animation: "bounce 1.4s infinite ease-in-out 0.4s" }}></span>
+              <div style={{ display: "flex", gap: "0.3rem", alignItems: "center" }}>
+                <span style={{ fontSize: "0.7rem", fontFamily: "var(--font-mono)", color: "var(--fg-muted)" }}>[AGENT_PROCESSING]</span>
+                <span className="typing-dot" style={{ width: "3px", height: "3px", background: "var(--fg-color)", borderRadius: "50%", display: "inline-block", animation: "bounce 1.4s infinite ease-in-out" }}></span>
+                <span className="typing-dot" style={{ width: "3px", height: "3px", background: "var(--fg-color)", borderRadius: "50%", display: "inline-block", animation: "bounce 1.4s infinite ease-in-out 0.2s" }}></span>
+                <span className="typing-dot" style={{ width: "3px", height: "3px", background: "var(--fg-color)", borderRadius: "50%", display: "inline-block", animation: "bounce 1.4s infinite ease-in-out 0.4s" }}></span>
               </div>
             )}
-            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Area */}
-          <div style={{ borderTop: "1px solid var(--card-border)", padding: "0.75rem 1.25rem", display: "flex", gap: "0.5rem" }}>
+          <div style={{ borderTop: "1px solid var(--card-border)", padding: "12px 1.5rem", display: "flex", gap: "0.5rem", background: "var(--card-bg)" }}>
+            <span style={{ color: "var(--fg-color)", fontFamily: "var(--font-mono)", fontSize: "0.85rem", display: "flex", alignItems: "center" }}>&gt;</span>
             <input 
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend(input)}
-              placeholder="Ask me something..."
+              placeholder="Ask agent..."
               disabled={isTyping}
               style={{
                 flexGrow: 1,
                 background: "transparent",
                 border: "none",
                 color: "var(--fg-color)",
-                fontSize: "0.9rem",
-                outline: "none"
+                fontSize: "0.85rem",
+                outline: "none",
+                fontFamily: "var(--font-mono)",
+                padding: 0
               }}
             />
             <button 
@@ -261,12 +280,13 @@ Key Achievements:
               style={{
                 background: "transparent",
                 border: "none",
-                color: input.trim() ? "var(--primary-color)" : "var(--fg-muted)",
+                color: input.trim() ? "var(--fg-color)" : "var(--fg-muted)",
                 fontSize: "1.1rem",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center"
+                justifyContent: "center",
+                padding: 0
               }}
               aria-label="Send message"
             >
@@ -276,15 +296,15 @@ Key Achievements:
         </div>
       </div>
       
-      {/* Typing animation styling */}
       <style jsx global>{`
         @keyframes bounce {
           0%, 80%, 100% { transform: scale(0); }
           40% { transform: scale(1.0); }
         }
         .quick-prompt-btn:hover {
-          background: var(--primary-glow) !important;
-          border-color: var(--primary-color) !important;
+          background: rgba(255, 255, 255, 0.04) !important;
+          border-color: #ffffff !important;
+          color: #ffffff !important;
         }
       `}</style>
     </section>

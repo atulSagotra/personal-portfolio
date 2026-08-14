@@ -12,6 +12,9 @@ import Experience from "../sections/Experience";
 import Skills from "../sections/Skills";
 import Contact from "../sections/Contact";
 import useWebMCP from "../hooks/useWebMCP";
+import CyberCanvas from "../components/CyberCanvas";
+import CursorTrailer from "../components/CursorTrailer";
+import SandboxHUD from "../components/SandboxHUD";
 
 export default function Home() {
   useWebMCP();
@@ -37,10 +40,10 @@ export default function Home() {
 
     if (isDark) {
       root.classList.add("dark");
-      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#060608");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#020204");
     } else {
       root.classList.remove("dark");
-      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#f5f5f9");
+      document.querySelector('meta[name="theme-color"]')?.setAttribute("content", "#020204");
     }
 
     try {
@@ -68,13 +71,9 @@ export default function Home() {
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, [theme]);
 
-  // Fallback Scroll-Reveal Intersection Observer
+  // Scroll-Reveal Intersection Observer
   useEffect(() => {
     if (typeof window === "undefined") return;
-
-    if (window.CSS && CSS.supports("(animation-timeline: view()) and (animation-range: entry)")) {
-      return;
-    }
 
     const observer = new IntersectionObserver(
       (entries) => {
@@ -98,16 +97,29 @@ export default function Home() {
   return (
     <>
       <Header theme={theme} setTheme={setTheme} />
+      <CyberCanvas />
+      <SandboxHUD />
+      <CursorTrailer />
+      <div className="film-grain" />
       
-      <main style={{ maxWidth: "1100px", margin: "0 auto", padding: "0 1.5rem 8rem 1.5rem" }}>
+      {/* Minimalist vertical section index tracker */}
+      <div className="vertical-nav" style={{ position: "fixed", right: "2.5rem", top: "50%", transform: "translateY(-50%)", display: "flex", flexDirection: "column", gap: "1.25rem", zIndex: 100, mixBlendMode: "difference" }}>
+        <a href="#home" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>01 / INTRO</a>
+        <a href="#experience" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>02 / WORK</a>
+        <a href="#performance" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>03 / VITALS</a>
+        <a href="#ai-auditor" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>04 / AUDIT</a>
+        <a href="#contact" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>05 / TALK</a>
+      </div>
+
+      <main style={{ maxWidth: "980px", margin: "0 auto", padding: "0 2rem 8rem 2rem", position: "relative", zIndex: 1 }}>
         <Hero />
-        <Terminal />
         <ProjectsShowcase />
-        <ClientAuditor />
-        <PerformanceStats />
         <About />
         <Experience />
         <Skills />
+        <PerformanceStats />
+        <ClientAuditor />
+        <Terminal />
         <Contact />
       </main>
     </>

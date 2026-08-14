@@ -1,175 +1,129 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { FiActivity, FiZap, FiTarget, FiTrendingUp } from "react-icons/fi";
+import { FiZap, FiActivity, FiTarget, FiTrendingUp } from "react-icons/fi";
 
 const SCORES = [
-  { label: "Performance", value: 100, color: "var(--success-color)", delay: 0 },
-  { label: "Accessibility", value: 100, color: "var(--primary-color)", delay: 100 },
-  { label: "Best Practices", value: 100, color: "var(--accent-color)", delay: 200 },
-  { label: "SEO", value: 100, color: "var(--primary-color)", delay: 300 }
+  { label: "Performance", value: 100 },
+  { label: "Accessibility", value: 100 },
+  { label: "Best Practices", value: 100 },
+  { label: "SEO", value: 100 }
 ];
 
 const METRICS = [
-  { label: "Largest Contentful Paint (LCP)", value: "0.8s", threshold: "Ultra Fast", desc: "Main content renders instantly", icon: <FiZap /> },
-  { label: "Interaction to Next Paint (INP)", value: "45ms", threshold: "Highly Responsive", desc: "Instant tap & scroll feedback", icon: <FiActivity /> },
-  { label: "Cumulative Layout Shift (CLS)", value: "0.00", threshold: "Stable Layout", desc: "No unexpected visual shifts", icon: <FiTarget /> },
-  { label: "Micro-Frontend Bundle Size", value: "180ms", threshold: "Optimal Bundle", desc: "Independently loaded submodules", icon: <FiTrendingUp /> }
+  { label: "Largest Contentful Paint", value: "0.8s", threshold: "Optimal", desc: "Hero image loads instantly", icon: <FiZap /> },
+  { label: "Interaction to Next Paint", value: "45ms", threshold: "Highly Responsive", desc: "No tap/scroll delays", icon: <FiActivity /> },
+  { label: "Cumulative Layout Shift", value: "0.00", threshold: "Stable", desc: "No unexpected element jumps", icon: <FiTarget /> },
+  { label: "Initial Micro-bundle Load", value: "180ms", threshold: "Federated", desc: "Optimal network parsing", icon: <FiTrendingUp /> }
 ];
 
 export default function PerformanceStats() {
   const [animate, setAnimate] = useState(false);
 
   useEffect(() => {
-    // Small delay to trigger smooth SVG animations on load
     const timer = setTimeout(() => setAnimate(true), 200);
     return () => clearTimeout(timer);
   }, []);
 
   return (
-    <section id="performance" style={{ padding: "3rem 0 6rem 0" }}>
-      <div style={{ marginBottom: "3rem" }}>
-        <p className="text-gradient" style={{ fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", fontSize: "0.9rem" }}>
-          Quality Standards
-        </p>
-        <h2 style={{ fontSize: "2.5rem", marginTop: "0.5rem" }}>Lighthouse & Vitals Dashboard</h2>
+    <section id="performance" className="scroll-reveal" style={{ padding: "6rem 0", position: "relative" }}>
+      
+      {/* Header */}
+      <div style={{ textAlign: "left", marginBottom: "4rem" }}>
+        <h2 className="reveal-mask" style={{ color: "var(--fg-muted)", fontFamily: "var(--font-mono)", letterSpacing: "0.15em", textTransform: "uppercase", fontSize: "0.72rem", fontWeight: "600", marginBottom: "0.5rem" }}>
+          <span>[ METRICS TELEMETRY ]</span>
+        </h2>
+        <h3 style={{ fontSize: "2.8rem", fontWeight: "800", color: "var(--fg-color)", letterSpacing: "-0.02em" }}>Vitals & Audits.</h3>
       </div>
 
-      <div style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
-        gap: "2.5rem",
-        alignItems: "stretch"
-      }}>
-        {/* Left Card: Lighthouse Rings */}
-        <div className="glass-card" style={{ padding: "2.5rem", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+      <div className="asymmetric-grid">
+        
+        {/* Left Column: Minimal Audits */}
+        <div className="glass-card" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "2.5rem", border: "1px solid var(--card-border)" }}>
+          {/* Tech Corners */}
+          <div className="grid-corner corner-tl"></div>
+          <div className="grid-corner corner-tr"></div>
+          <div className="grid-corner corner-bl"></div>
+          <div className="grid-corner corner-br"></div>
+
           <div>
-            <h3 style={{ fontSize: "1.3rem", fontWeight: 700, marginBottom: "0.5rem" }}>Audits & Performance</h3>
-            <p style={{ color: "var(--fg-muted)", fontSize: "0.9rem", marginBottom: "2rem" }}>
-              Standard audits computed via Chrome DevTools Lighthouse tool chain. 100/100 scores achieved via server-side generation (Next.js) and optimized rendering.
+            <h4 style={{ fontSize: "1.1rem", fontWeight: "700", color: "var(--fg-color)", marginBottom: "0.75rem", fontFamily: "var(--font-mono)" }}>
+              // LIGHTHOUSE_ENGINE
+            </h4>
+            <p style={{ color: "var(--fg-muted)", fontSize: "0.95rem", lineHeight: "1.65", marginBottom: "3rem" }}>
+              Standard Lighthouse audit results compiled in production using Server-Side rendering (SSR) and optimized bundle federation.
             </p>
           </div>
 
-          <div style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "2rem",
-            justifyContent: "center"
-          }}>
-            {SCORES.map((score, idx) => {
-              const radius = 35;
-              const circumference = 2 * Math.PI * radius;
-              const strokeDashoffset = animate 
-                ? circumference - (score.value / 100) * circumference 
-                : circumference;
-
-              return (
-                <div key={idx} style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  justifyContent: "center"
-                }}>
-                  <div style={{ position: "relative", width: "90px", height: "90px" }}>
-                    <svg style={{ transform: "rotate(-90deg)", width: "90px", height: "90px" }}>
-                      {/* Background circle */}
-                      <circle
-                        cx="45"
-                        cy="45"
-                        r={radius}
-                        fill="transparent"
-                        stroke="var(--card-border)"
-                        strokeWidth="6"
-                      />
-                      {/* Active progress circle */}
-                      <circle
-                        cx="45"
-                        cy="45"
-                        r={radius}
-                        fill="transparent"
-                        stroke={score.color}
-                        strokeWidth="6"
-                        strokeDasharray={circumference}
-                        strokeDashoffset={strokeDashoffset}
-                        strokeLinecap="round"
-                        style={{
-                          transition: `stroke-dashoffset 1s ease-out ${score.delay}ms`
-                        }}
-                      />
-                    </svg>
-                    <div style={{
-                      position: "absolute",
-                      top: 0,
-                      left: 0,
-                      width: "100%",
-                      height: "100%",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: "1.2rem",
-                      fontWeight: 800
-                    }}>
-                      {score.value}
-                    </div>
-                  </div>
-                  <div style={{ fontSize: "0.85rem", color: "var(--fg-muted)", marginTop: "0.75rem", fontWeight: 600 }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
+            {SCORES.map((score, idx) => (
+              <div key={idx} style={{ display: "flex", flexDirection: "column", gap: "0.5rem" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+                  <span style={{ fontSize: "0.72rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "var(--fg-muted)", fontFamily: "var(--font-mono)" }}>
                     {score.label}
-                  </div>
+                  </span>
+                  <span style={{ fontSize: "1.1rem", fontWeight: "800", color: "var(--fg-color)", fontFamily: "var(--font-mono)" }}>
+                    {score.value} / 100
+                  </span>
                 </div>
-              );
-            })}
+                {/* Thin Linear Progress bar */}
+                <div style={{ width: "100%", height: "1px", background: "var(--card-border)", position: "relative" }}>
+                  <div 
+                    style={{ 
+                      position: "absolute",
+                      left: 0,
+                      top: 0,
+                      height: "100%",
+                      width: animate ? "100%" : "0%",
+                      background: "var(--primary-color)",
+                      transition: "width 1.8s cubic-bezier(0.16, 1, 0.3, 1)"
+                    }}
+                  />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
-        {/* Right Card: Core Web Vitals Stats */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+        {/* Right Column: Web Vitals Table list */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
           {METRICS.map((metric, idx) => (
             <div 
               key={idx} 
-              className="glass-card" 
-              style={{
-                padding: "1.25rem 1.5rem",
-                display: "flex",
-                alignItems: "center",
-                gap: "1.25rem",
-                transition: "transform 0.2s"
+              style={{ 
+                display: "flex", 
+                alignItems: "center", 
+                justifyContent: "space-between", 
+                borderBottom: "1px solid var(--card-border)",
+                paddingBottom: "1.5rem"
               }}
-              onMouseEnter={(e) => e.currentTarget.style.transform = "translateX(5px)"}
-              onMouseLeave={(e) => e.currentTarget.style.transform = "translateX(0)"}
             >
-              <div style={{
-                width: "42px",
-                height: "42px",
-                borderRadius: "50%",
-                background: "var(--primary-glow)",
-                color: "var(--primary-color)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: "1.2rem",
-                flexShrink: 0
-              }}>
-                {metric.icon}
-              </div>
-
-              <div style={{ flexGrow: 1 }}>
-                <div style={{ fontSize: "0.85rem", fontWeight: 700 }}>{metric.label}</div>
-                <div style={{ fontSize: "0.75rem", color: "var(--fg-muted)", marginTop: "0.15rem" }}>
-                  {metric.desc}
+              <div style={{ display: "flex", alignItems: "center", gap: "1.25rem" }}>
+                <div style={{ fontSize: "1.2rem", color: "var(--primary-color)" }}>
+                  {metric.icon}
+                </div>
+                <div>
+                  <h4 style={{ fontSize: "0.95rem", fontWeight: "750", color: "var(--fg-color)" }}>
+                    {metric.label}
+                  </h4>
+                  <p style={{ fontSize: "0.75rem", color: "var(--fg-muted)", marginTop: "0.25rem" }}>
+                    {metric.desc}
+                  </p>
                 </div>
               </div>
 
-              <div style={{ textAlign: "right", flexShrink: 0 }}>
-                <div className="text-gradient" style={{ fontSize: "1.3rem", fontWeight: 800 }}>
+              <div style={{ textAlign: "right" }}>
+                <span style={{ fontSize: "1.25rem", fontWeight: "800", color: "var(--fg-color)", fontFamily: "var(--font-mono)" }}>
                   {metric.value}
-                </div>
-                <div style={{ fontSize: "0.7rem", color: "var(--success-color)", fontWeight: 600, marginTop: "0.15rem" }}>
-                  {metric.threshold}
+                </span>
+                <div style={{ fontSize: "0.65rem", color: "var(--fg-muted)", fontFamily: "var(--font-mono)", marginTop: "0.25rem", textTransform: "uppercase" }}>
+                  // {metric.threshold}
                 </div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
