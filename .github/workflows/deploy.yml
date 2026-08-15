@@ -6,6 +6,10 @@ on:
       - dev
       - main
 
+env:
+  VERCEL_ORG_ID: team_Rtik4IiqKl30kaJusCvUgfIt
+  VERCEL_PROJECT_ID: prj_ohEdm1gudgdz2owCkuaH4hlAnoV3
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
