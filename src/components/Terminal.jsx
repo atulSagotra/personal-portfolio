@@ -1,20 +1,20 @@
+"use client";
+
 import React, { useState, useRef, useEffect } from "react";
 
 export default function Terminal() {
   const [history, setHistory] = useState([
-    { type: "output", text: "Atul OS v2.0.26 (built for the AI era)" },
-    { type: "output", text: "Type 'help' to view all available commands." },
+    { type: "output", text: "Atul OS v3.0.0 (Minimal Command Shell)" },
+    { type: "output", text: "Type 'help' to review available commands." },
   ]);
   const [input, setInput] = useState("");
   const terminalEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Auto scroll to bottom when history changes
   useEffect(() => {
     terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history]);
 
-  // Focus terminal input when clicking the container
   const focusInput = () => {
     inputRef.current?.focus();
   };
@@ -24,7 +24,6 @@ export default function Terminal() {
 
     const trimmedInput = input.trim();
     const command = trimmedInput.toLowerCase().split(" ")[0];
-
     const newHistory = [...history, { type: "input", text: trimmedInput }];
 
     if (command === "clear") {
@@ -40,44 +39,30 @@ export default function Terminal() {
         break;
       case "help":
         output = `Available commands:
-  - about       : Brief intro about Atul
-  - skills      : List technical skill sets
-  - experience  : Show work history
-  - contact     : Get contact details
-  - clear       : Clear the console screen
-  - sudo        : Try escalations
-  - easter-egg  : Reveal something fun`;
+  - about       : Executive summary profile
+  - skills      : Technical stack metrics
+  - experience  : Selective career timeline
+  - contact     : Direct coordinates and email
+  - clear       : Wipe shell terminal logs`;
         break;
       case "about":
-        output = "Atul Sagotra: Front-End / Full-Stack Engineer with 3+ years of experience. Expert in React, Next.js, and scaling micro-frontends. Currently based in Jammu, India.";
+        output = "Atul Sagotra: Engineering Lead & Frontend Architect with 6+ years of experience. Specializing in high-performance Next.js and micro-frontends. Located in Brampton, ON (Canada).";
         break;
       case "skills":
-        output = "ReactJS, NextJS, JavaScript, HTML/CSS, Python, Django, Tailwind CSS, Styled Components, Micro-frontends, Responsive Web Design.";
+        output = "Frontend Architecture (React, Next.js, Micro-frontends/Module Federation), AI Orchestration (Claude, GPTs, Custom Agents), Leadership Workflows (Technical Scoping, Roadmaps, Mentorship), Backend & DevOps (Node.js, Databases, Git, CI/CD).";
         break;
       case "experience":
-        output = `Employment History:
-  1. Pasarpolis (Gurugram) - B2C Front-end Lead (TAPINSURE app).
-  2. Xoriant (Pune) - Software Engineer (React / Micro-frontends).
-  3. T-Systems (Pune) - Engineering Intern.`;
+        output = `Timeline:
+  1. Charger Logistics (Canada) - Team Lead (Aug 2024 - Present)
+  2. Material Plus (Gurugram) - Senior Web Developer (Feb 2023 - July 2024)
+  3. Pasarpolis (Gurugram) - B2C Front-end Lead (2023)
+  4. Xoriant (Pune) - Software Engineer (2021 - 2023)`;
         break;
       case "contact":
-        output = "Email: atulsagotra10@gmail.com | GitHub: @atulsagotra | LinkedIn: linkedin.com/in/atulsagotra";
-        break;
-      case "sudo":
-        output = "Permission denied. Nice try! Antigravity sandbox protects this terminal.";
-        break;
-      case "easter-egg":
-        output = `
-  ██████╗ ██╗  ██╗    ███╗   ███╗███████╗
-  ██╔══██╗╚██╗██╔╝    ████╗ ████║██╔════╝
-  ██████╔╝ ╚███╔╝     ██╔████╔██║█████╗  
-  ██╔═══╝  ██╔██╗     ██║╚██╔╝██║██╔══╝  
-  ██║     ██╔╝ ██╗    ██║ ╚═╝ ██║███████╗
-  ╚═╝     ╚═╝  ╚═╝    ╚═╝     ╚═╝╚══════╝
-  You found the secret command! Have an awesome day!`;
+        output = "Email: atulsagotra774@gmail.com | LinkedIn: linkedin.com/in/atulsagotra | GitHub: github.com/atulsagotra";
         break;
       default:
-        output = `Command not found: '${command}'. Type 'help' for a list of commands.`;
+        output = `Unknown query: '${command}'. Type 'help' for instructions.`;
     }
 
     if (output) {
@@ -89,41 +74,90 @@ export default function Terminal() {
   };
 
   return (
-    <section className="terminal-section scroll-reveal" onClick={focusInput}>
-      <div className="terminal-window">
-        <div className="terminal-header">
-          <div className="terminal-buttons">
-            <span className="dot dot-red"></span>
-            <span className="dot dot-yellow"></span>
-            <span className="dot dot-green"></span>
-          </div>
-          <div className="terminal-title">bash - visitor@atulsagotra.dev</div>
-          <div className="terminal-spacer"></div>
+    <section className="terminal-section scroll-reveal" style={{ padding: "3rem 0" }}>
+      <div 
+        onClick={focusInput}
+        className="glass-card"
+        style={{ 
+          background: "var(--card-bg)",
+          border: "1px solid var(--card-border)",
+          borderRadius: "4px",
+          overflow: "hidden", 
+          transition: "border-color 0.4s ease",
+          cursor: "text"
+        }}
+      >
+        {/* Technical grid blueprint corner decorators */}
+        <div className="grid-corner corner-tl"></div>
+        <div className="grid-corner corner-tr"></div>
+        <div className="grid-corner corner-bl"></div>
+        <div className="grid-corner corner-br"></div>
+
+        {/* Simple Minimal Title Bar */}
+        <div 
+          style={{ 
+            display: "flex", 
+            justifyContent: "space-between", 
+            alignItems: "center", 
+            padding: "12px 1.5rem", 
+            borderBottom: "1px solid var(--card-border)",
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.7rem",
+            color: "var(--fg-muted)",
+            textTransform: "uppercase",
+            letterSpacing: "0.08em"
+          }}
+        >
+          <span>Console // visitor@atulsagotra.dev</span>
+          <span style={{ fontSize: "0.65rem", opacity: 0.6, display: "flex", alignItems: "center", gap: "6px" }}>
+            <span className="status-indicator" style={{ background: "var(--primary-color)", boxShadow: "0 0 8px var(--primary-color)" }}></span> System Terminal
+          </span>
         </div>
         
-        <div className="terminal-body">
+        {/* Terminal Body */}
+        <div 
+          style={{
+            padding: "1.75rem",
+            fontFamily: "var(--font-mono)",
+            fontSize: "0.85rem",
+            lineHeight: "1.65",
+            minHeight: "220px",
+            maxHeight: "340px",
+            overflowY: "auto",
+            color: "var(--fg-muted)"
+          }}
+        >
           {history.map((line, idx) => (
-            <div key={idx} className={`terminal-line ${line.type}`}>
+            <div key={idx} style={{ marginBottom: "0.4rem" }}>
               {line.type === "input" ? (
                 <>
-                  <span className="prompt">visitor@atulsagotra.dev:~$ </span>
-                  <span className="command-text">{line.text}</span>
+                  <span style={{ color: "var(--fg-color)" }}>&gt; {line.text}</span>
                 </>
               ) : (
-                <pre className="output-text">{line.text}</pre>
+                <pre style={{ color: "var(--fg-muted)", whiteSpace: "pre-wrap", margin: 0, fontFamily: "inherit" }}>{line.text}</pre>
               )}
             </div>
           ))}
           
-          <div className="terminal-line input-line">
-            <span className="prompt">visitor@atulsagotra.dev:~$ </span>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <span style={{ color: "var(--fg-color)", marginRight: "8px" }}>&gt;</span>
             <input
               ref={inputRef}
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={handleCommand}
-              className="terminal-input"
+              style={{
+                background: "transparent",
+                border: "none",
+                color: "var(--fg-color)",
+                outline: "none",
+                fontFamily: "var(--font-mono)",
+                fontSize: "0.85rem",
+                flexGrow: 1,
+                padding: 0,
+                width: "auto"
+              }}
               autoComplete="off"
               autoCorrect="off"
               autoCapitalize="off"

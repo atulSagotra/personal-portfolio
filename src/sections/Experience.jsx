@@ -1,151 +1,226 @@
+"use client";
+
 import React, { useState } from "react";
-import { FaCalendarAlt, FaMapMarkerAlt, FaExternalLinkAlt, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaExternalLinkAlt, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
+import Magnetic from "../components/Magnetic";
 
 export default function Experience() {
   const experiences = [
     {
-      company: "Pasarpolis",
-      role: "Lead Front-end Engineer (B2C)",
-      period: "2023 - Present",
-      location: "Gurugram, Haryana (India)",
-      about: "Indonesia's first and leading Insurance Technology (Insurtech) company with 40+ partners, making insurance accessible and simple.",
-      link: "https://pasarpolis.io/",
-      logo: "https://storage.googleapis.com/pp_img/website/pp-logo-yellow-cap.png",
+      company: "Charger Logistics",
+      role: "Team Lead",
+      period: "Aug 2024 - Present",
+      location: "Brampton, ON (Canada)",
+      about: "A leading North American logistics firm optimizing fleets and business operations through reactive real-time systems.",
+      link: "https://www.chargerlogistics.com/",
       responsibilities: [
         {
-          title: "B2C Mobile-Web Lead",
-          desc: "Leads the frontend of the B2C mobile application built with Next.js. Developed ~70% of the frontend code to deliver the B2C mobile application (TAPINSURE) in 3 months.",
+          title: "Team Leadership",
+          desc: "Manage end-to-end deliveries, coordinating with Business Analysts, DevOps, and Architects to lead full-scale project executions."
         },
         {
-          title: "Architecture & Micro-frontends",
-          desc: "Created micro-frontend systems to solve common integration problems for multiple corporate clients, reducing deployment time by ~40%.",
+          title: "AI Integrations",
+          desc: "Implement Claude LLMs for application planning, testing, and automated codebase documentation. Created expert knowledgebases to accelerate feature development."
         },
         {
-          title: "Component Libraries",
-          desc: "Built custom reusable component libraries that reduced overall developer integration timelines by 10-15%.",
-        },
-        {
-          title: "Product Alignment",
-          desc: "Collaborated closely with the product and engineering teams to identify critical bottlenecks, launching a product with 500+ downloads within its first week.",
+          title: "Enterprise Boards",
+          desc: "Architected key dashboards (Order Board, Trip Board, Contract Board, Customer Portal) using React, Zustand, and Firestore."
         }
       ],
-      tech: ["Next.js", "React", "JavaScript", "Styled Components", "Webpack", "REST APIs"]
+      tech: ["React", "Zustand", "React Query", "Firestore", "Claude AI"]
+    },
+    {
+      company: "Material Plus",
+      role: "Senior Web Developer",
+      period: "Feb 2023 - July 2024",
+      location: "Gurugram, India",
+      about: "Global technology and marketing consulting agency delivering premium digital platforms for international enterprises.",
+      link: "https://materialplus.io/",
+      responsibilities: [
+        {
+          title: "SportsClips Applications",
+          desc: "Built full-scale client applications from scratch and dashboard platforms now active in the App Store."
+        },
+        {
+          title: "Nasdaq Nordic CMS",
+          desc: "Designed and engineered complex content management systems using React, Next.js, and PHP Lit components."
+        }
+      ],
+      tech: ["React", "Next.js", "Node.js", "PHP Lit Components", "Tailwind CSS"]
+    },
+    {
+      company: "Pasarpolis",
+      role: "Lead Front-end Engineer (B2C)",
+      period: "2023",
+      location: "Gurugram, India",
+      about: "Indonesia's leading insurtech firm making insurance simple and accessible for over 40 corporate partners.",
+      link: "https://pasarpolis.io/",
+      responsibilities: [
+        {
+          title: "B2C Mobile Web",
+          desc: "Developed ~70% of the TAPINSURE mobile-web interface in Next.js from scratch within 3 months."
+        },
+        {
+          title: "Micro-frontends",
+          desc: "Engineered robust micro-frontend integrations that decreased deployment timelines by 40%."
+        }
+      ],
+      tech: ["Next.js", "React", "Styled Components", "Webpack", "REST APIs"]
     },
     {
       company: "Xoriant",
       role: "Software Engineer",
       period: "2021 - 2023",
-      location: "Pune, Maharashtra (India)",
-      about: "Silicon Valley-headquartered product engineering and technology services firm partnering with Microsoft, AWS, Oracle, Google, and Cisco.",
+      location: "Pune, India",
+      about: "Silicon Valley-headquartered product engineering firm building high-performance cloud and web software solutions.",
       link: "https://www.xoriant.com/",
-      logo: "https://www.xoriant.com/cdn/ff/h8j4-N1kFokMkyOEiHIQVjpbRE5vP8EOCe4cCjK-sP4/1618405020/public/Xoriant-Logo.png",
       responsibilities: [
         {
           title: "Submodule Leadership",
-          desc: "Assisted in building full-scale web applications, leading specific product modules and delivering client features on schedule.",
+          desc: "Assisted in building full-scale web applications, leading specific product modules and delivering client features on schedule."
         },
         {
-          title: "React micro-frontends",
-          desc: "Designed and integrated independent frontend submodules using React that are shared across various parent platforms.",
-        },
-        {
-          title: "Tailwind UI Integration",
-          desc: "Adopted Tailwind CSS to deliver custom pixel-perfect layouts, maximizing UI consistency across dynamic browser configurations.",
+          title: "Micro-frontends",
+          desc: "Designed and integrated independent frontend submodules using React that are shared across various parent platforms."
         }
       ],
-      tech: ["React", "JavaScript", "Tailwind CSS", "Redux", "Micro-frontends", "Git"]
+      tech: ["React", "JavaScript", "Tailwind CSS", "Redux", "Git"]
     },
     {
       company: "T-Systems",
       role: "Software Engineer Intern",
       period: "2020 - 2021",
-      location: "Pune, Maharashtra (India)",
+      location: "Pune, India",
       about: "ICT subsidiary of Deutsche Telekom, driving digital transformation with end-to-end IT solutions across global industries.",
       link: "https://www.t-systems.com/",
-      logo: "https://www.t-systems.com/resource/crblob/218588/b0e71f03622a178044f0a0f7e3f1f391/logo-t-systems-magenta.svg-data.svg",
       responsibilities: [
         {
           title: "Campus to Corporate",
-          desc: "Completed orientation covering the Software Development Life Cycle (SDLC), code reviews, and enterprise guidelines.",
+          desc: "Completed orientation covering the Software Development Life Cycle (SDLC), code reviews, and enterprise guidelines."
         },
         {
           title: "UI Prototypes",
-          desc: "Gained hands-on experience translating UI/UX wireframes into functional web prototypes using HTML, CSS, and React.",
-        },
-        {
-          title: "Technical Mentorship",
-          desc: "Received training under senior staff members on best practices in codebase structure, accessibility, and documentation.",
+          desc: "Gained hands-on experience translating UI/UX wireframes into functional web prototypes using HTML, CSS, and React."
         }
       ],
       tech: ["HTML5", "CSS3", "JavaScript", "React", "SDLC", "Agile"]
     }
   ];
 
-  const [expandedIndex, setExpandedIndex] = useState(0);
-
-  const toggleExpand = (idx) => {
-    setExpandedIndex(expandedIndex === idx ? -1 : idx);
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
+  const activeExp = experiences[activeIndex];
 
   return (
     <section id="experience" className="experience-section scroll-reveal">
-      <h2 className="section-title">Work Experience</h2>
-      <div className="timeline-container">
-        <div className="timeline-line"></div>
-        {experiences.map((exp, idx) => {
-          const isExpanded = expandedIndex === idx;
-          return (
-            <div key={idx} className={`timeline-item ${isExpanded ? "active" : ""}`}>
-              <div className="timeline-dot"></div>
-              
-              <div className="timeline-content glass-card">
-                <div className="timeline-header-block" onClick={() => toggleExpand(idx)}>
-                  <div className="company-logo-block">
-                    <img src={exp.logo} alt={exp.company} className="company-logo" />
-                  </div>
-                  
-                  <div className="timeline-summary">
-                    <h3 className="company-name">{exp.company}</h3>
-                    <h4 className="job-role">{exp.role}</h4>
-                    
-                    <div className="timeline-meta">
-                      <span><FaCalendarAlt /> {exp.period}</span>
-                      <span><FaMapMarkerAlt /> {exp.location}</span>
-                    </div>
-                  </div>
+      
+      {/* Centered Minimal Header */}
+      <div style={{ textAlign: "left", marginBottom: "4rem" }}>
+        <h2 className="reveal-mask" style={{ color: "var(--fg-muted)", fontFamily: "var(--font-mono)", letterSpacing: "0.15em", textTransform: "uppercase", fontSize: "0.72rem", fontWeight: "600", marginBottom: "0.5rem" }}>
+          <span>[ WORK TIMELINE ]</span>
+        </h2>
+        <h3 style={{ fontSize: "2.8rem", fontWeight: "800", color: "var(--fg-color)", letterSpacing: "-0.02em" }}>Selected Work.</h3>
+      </div>
 
-                  <div className="expand-icon-wrapper">
-                    {isExpanded ? <FaChevronUp /> : <FaChevronDown />}
+      <div style={{ display: "grid", gridTemplateColumns: "0.7fr 1.3fr", gap: "4.5rem", position: "relative" }} className="asymmetric-grid">
+        
+        {/* Left Column: Spotlight Menu */}
+        <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem", borderRight: "1px solid var(--card-border)", paddingRight: "2.5rem" }}>
+          {experiences.map((exp, idx) => {
+            const isActive = activeIndex === idx;
+            return (
+              <Magnetic key={idx} scale={0.15}>
+                <div 
+                  onClick={() => setActiveIndex(idx)}
+                  onMouseEnter={() => setActiveIndex(idx)}
+                  style={{ cursor: "pointer", display: "flex", alignItems: "center", gap: "1.25rem", padding: "0.5rem 0", transition: "transform 0.3s ease" }}
+                  className="interactive-node"
+                >
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: "0.7rem", color: isActive ? "var(--primary-color)" : "var(--fg-muted)", opacity: isActive ? 1 : 0.4, transition: "all 0.3s ease" }}>
+                    0{idx + 1}
+                  </span>
+                  
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <h4 style={{ 
+                      fontSize: "1.55rem", 
+                      fontWeight: isActive ? "800" : "500", 
+                      color: isActive ? "var(--fg-color)" : "var(--fg-muted)",
+                      letterSpacing: "-0.02em",
+                      transition: "all 0.3s ease",
+                      position: "relative"
+                    }}>
+                      {exp.company}
+                    </h4>
                   </div>
                 </div>
+              </Magnetic>
+            );
+          })}
+        </div>
 
-                {isExpanded && (
-                  <div className="timeline-details">
-                    <p className="company-about">{exp.about}</p>
-                    <a href={exp.link} target="_blank" rel="noopener noreferrer" className="company-link">
-                      Visit {exp.company} <FaExternalLinkAlt size={10} style={{ marginLeft: "4px" }} />
-                    </a>
+        {/* Right Column: Dynamic Spotlight Details Panel */}
+        <div key={activeIndex} className="spotlight-details" style={{ display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+          <div className="glass-card" style={{ padding: "2.5rem", border: "1px solid var(--card-border)" }}>
+            
+            {/* Technical grid blueprint corner decorators */}
+            <div className="grid-corner corner-tl"></div>
+            <div className="grid-corner corner-tr"></div>
+            <div className="grid-corner corner-bl"></div>
+            <div className="grid-corner corner-br"></div>
 
-                    <h5 className="responsibilities-title">Key Contributions</h5>
-                    <ul className="responsibilities-list">
-                      {exp.responsibilities.map((resp, rIdx) => (
-                        <li key={rIdx}>
-                          <strong>{resp.title}:</strong> {resp.desc}
-                        </li>
-                      ))}
-                    </ul>
-
-                    <div className="tech-tags">
-                      {exp.tech.map((t, tIdx) => (
-                        <span key={tIdx} className="tech-tag">{t}</span>
-                      ))}
-                    </div>
-                  </div>
-                )}
+            {/* Header info block */}
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "2rem", flexWrap: "wrap", gap: "1rem" }}>
+              <div>
+                <h4 style={{ fontSize: "1.6rem", fontWeight: "750", color: "var(--fg-color)" }}>{activeExp.role}</h4>
+                <div style={{ display: "flex", gap: "1.25rem", fontSize: "0.8rem", color: "var(--fg-muted)", fontFamily: "var(--font-mono)", marginTop: "0.5rem", flexWrap: "wrap" }}>
+                  <span style={{ display: "flex", alignItems: "center", gap: "6px" }}><FaCalendarAlt size={10} /> {activeExp.period}</span>
+                  <span>/</span>
+                  <span style={{ display: "flex", alignItems: "center", gap: "6px" }}><FaMapMarkerAlt size={10} /> {activeExp.location}</span>
+                </div>
               </div>
+              
+              <Magnetic scale={0.2}>
+                <a 
+                  href={activeExp.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="btn btn-secondary"
+                  style={{ padding: "0.5rem 1.25rem", fontSize: "0.68rem" }}
+                >
+                  VISIT SITE <FaExternalLinkAlt size={8} style={{ marginLeft: "6px" }} />
+                </a>
+              </Magnetic>
             </div>
-          );
-        })}
+
+            <p style={{ color: "var(--fg-color)", fontSize: "1rem", lineHeight: "1.65", marginBottom: "2.2rem", paddingBottom: "1.5rem", borderBottom: "1px solid rgba(255, 255, 255, 0.04)" }}>
+              {activeExp.about}
+            </p>
+
+            {/* key deliverables list */}
+            <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
+              {activeExp.responsibilities.map((resp, rIdx) => (
+                <div key={rIdx} style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: "1.5rem" }} className="experience-desc-mobile">
+                  <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-mono)", color: "var(--primary-color)", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: "600", marginTop: "0.25rem" }}>
+                    // {resp.title}
+                  </span>
+                  <p style={{ fontSize: "0.95rem", color: "var(--fg-muted)", lineHeight: "1.55", margin: 0 }}>
+                    {resp.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Minimal tech tags */}
+            <div style={{ marginTop: "3rem", display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+              {activeExp.tech.map((t, tIdx) => (
+                <span key={tIdx} className="tech-tag-minimal">
+                  {t}
+                </span>
+              ))}
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   );
