@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { FaArrowRight, FaExternalLinkAlt, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
+import { FaExternalLinkAlt, FaMapMarkerAlt, FaCalendarAlt } from "react-icons/fa";
 import Magnetic from "../components/Magnetic";
 
 export default function Experience() {
@@ -85,6 +85,25 @@ export default function Experience() {
         }
       ],
       tech: ["React", "JavaScript", "Tailwind CSS", "Redux", "Git"]
+    },
+    {
+      company: "T-Systems",
+      role: "Software Engineer Intern",
+      period: "2020 - 2021",
+      location: "Pune, India",
+      about: "ICT subsidiary of Deutsche Telekom, driving digital transformation with end-to-end IT solutions across global industries.",
+      link: "https://www.t-systems.com/",
+      responsibilities: [
+        {
+          title: "Campus to Corporate",
+          desc: "Completed orientation covering the Software Development Life Cycle (SDLC), code reviews, and enterprise guidelines."
+        },
+        {
+          title: "UI Prototypes",
+          desc: "Gained hands-on experience translating UI/UX wireframes into functional web prototypes using HTML, CSS, and React."
+        }
+      ],
+      tech: ["HTML5", "CSS3", "JavaScript", "React", "SDLC", "Agile"]
     }
   ];
 

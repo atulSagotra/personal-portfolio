@@ -26,7 +26,7 @@ export default function PerformanceStats() {
   }, []);
 
   return (
-    <section id="performance" className="scroll-reveal" style={{ padding: "6rem 0", position: "relative" }}>
+    <section id="performance" className="scroll-reveal" style={{ padding: "3.5rem 0", position: "relative" }}>
       
       {/* Header */}
       <div style={{ textAlign: "left", marginBottom: "4rem" }}>

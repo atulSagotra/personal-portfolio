@@ -123,8 +123,9 @@ export default function CursorTrailer() {
           ring.style.width = `${snapRect.width + 10}px`;
           ring.style.height = `${snapRect.height + 10}px`;
           ring.style.borderRadius = snapRect.borderRadius;
-          ring.style.backgroundColor = "var(--cursor-bg)";
-          ring.style.borderColor = "var(--cursor-border)";
+          const isDark = document.documentElement.classList.contains("dark");
+          ring.style.backgroundColor = isDark ? "rgba(255, 255, 255, 0.05)" : "rgba(15, 23, 42, 0.05)";
+          ring.style.borderColor = isDark ? "rgba(255, 255, 255, 0.35)" : "rgba(15, 23, 42, 0.35)";
           ring.style.opacity = isVisible ? "1" : "0";
         } else {
           // Normal state: outer ring trails mouse
@@ -134,7 +135,8 @@ export default function CursorTrailer() {
           ring.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%)`;
           ring.style.borderRadius = "50%";
           ring.style.backgroundColor = "transparent";
-          ring.style.borderColor = "var(--cursor-border-inactive)";
+          const isDarkNormal = document.documentElement.classList.contains("dark");
+          ring.style.borderColor = isDarkNormal ? "rgba(255, 255, 255, 0.2)" : "rgba(15, 23, 42, 0.2)";
           ring.style.opacity = isVisible ? "1" : "0";
 
           if (hoverType === "view") {
@@ -182,6 +184,7 @@ export default function CursorTrailer() {
       {/* Inner Dot */}
       <div
         ref={dotRef}
+        className="cursor-dot"
         style={{
           position: "fixed",
           top: 0,
@@ -189,7 +192,7 @@ export default function CursorTrailer() {
           width: "6px",
           height: "6px",
           borderRadius: "50%",
-          backgroundColor: "var(--cursor-color)",
+          backgroundColor: "var(--fg-color)",
           pointerEvents: "none",
           zIndex: 10001,
           opacity: 0,
@@ -206,7 +209,7 @@ export default function CursorTrailer() {
           left: 0,
           width: "26px",
           height: "26px",
-          border: "1px solid var(--cursor-border-inactive)",
+          border: "1px solid var(--card-border)",
           pointerEvents: "none",
           zIndex: 10000,
           opacity: 0,
@@ -224,7 +227,7 @@ export default function CursorTrailer() {
               fontFamily: "var(--font-mono)",
               fontSize: "0.55rem",
               fontWeight: 800,
-              color: "var(--cursor-color)",
+              color: "var(--fg-color)",
               letterSpacing: "0.08em",
               position: "absolute",
               animation: "fadeIn 0.2s ease forwards",

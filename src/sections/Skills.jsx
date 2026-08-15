@@ -74,38 +74,6 @@ export default function Skills() {
       {/* Title */}
       <h2 className="section-title">Skills // Capability Matrix</h2>
       
-      {/* Core Competencies Header */}
-      <div className="glass-card" style={{ padding: "2.5rem", marginBottom: "3.5rem", border: "1px solid rgba(255,255,255,0.05)" }}>
-        {/* Blueprint Corners */}
-        <div className="grid-corner corner-tl"></div>
-        <div className="grid-corner corner-tr"></div>
-        <div className="grid-corner corner-bl"></div>
-        <div className="grid-corner corner-br"></div>
-
-        <h3 style={{ fontSize: "1.2rem", fontWeight: "700", fontFamily: "var(--font-mono)", color: "var(--fg-color)", marginBottom: "1.5rem" }}>
-          // CORE_COMPETENCIES
-        </h3>
-        
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
-          <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
-            <span className="status-indicator" style={{ marginTop: "6px" }}></span>
-            <p style={{ fontSize: "0.95rem", color: "var(--fg-muted)", lineHeight: "1.5" }}>Developing responsive, high-performance mobile-first web applications.</p>
-          </div>
-          <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
-            <span className="status-indicator" style={{ marginTop: "6px" }}></span>
-            <p style={{ fontSize: "0.95rem", color: "var(--fg-muted)", lineHeight: "1.5" }}>Designing modular and scalable micro-frontend architectures with Module Federation.</p>
-          </div>
-          <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
-            <span className="status-indicator" style={{ marginTop: "6px" }}></span>
-            <p style={{ fontSize: "0.95rem", color: "var(--fg-muted)", lineHeight: "1.5" }}>Optimizing pages focusing on Core Web Vitals (LCP, INP, CLS) and SSR execution.</p>
-          </div>
-          <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
-            <span className="status-indicator" style={{ marginTop: "6px" }}></span>
-            <p style={{ fontSize: "0.95rem", color: "var(--fg-muted)", lineHeight: "1.5" }}>Building decoupled UI component libraries for fast feature rollouts.</p>
-          </div>
-        </div>
-      </div>
-
       {/* Category Tabs */}
       <div style={{ display: "flex", justifyContent: "flex-start", gap: "0.75rem", marginBottom: "3rem", flexWrap: "wrap" }}>
         {skillCategories.map((cat) => (
@@ -135,7 +103,7 @@ export default function Skills() {
       </div>
 
       {/* Skill Grid */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1.5rem" }}>
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: "1.5rem", marginBottom: "3.5rem" }}>
         {filteredSkills.map((skill, idx) => (
           <div 
             key={idx} 
@@ -167,6 +135,38 @@ export default function Skills() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* Core Competencies Header */}
+      <div className="glass-card" style={{ padding: "2.5rem", border: "1px solid rgba(255,255,255,0.05)" }}>
+        {/* Blueprint Corners */}
+        <div className="grid-corner corner-tl"></div>
+        <div className="grid-corner corner-tr"></div>
+        <div className="grid-corner corner-bl"></div>
+        <div className="grid-corner corner-br"></div>
+
+        <h3 style={{ fontSize: "1.2rem", fontWeight: "700", fontFamily: "var(--font-mono)", color: "var(--fg-color)", marginBottom: "1.5rem" }}>
+          // CORE_COMPETENCIES
+        </h3>
+        
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "1.5rem" }}>
+          <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
+            <span className="status-indicator" style={{ marginTop: "6px" }}></span>
+            <p style={{ fontSize: "0.95rem", color: "var(--fg-muted)", lineHeight: "1.5" }}>Developing responsive, high-performance mobile-first web applications.</p>
+          </div>
+          <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
+            <span className="status-indicator" style={{ marginTop: "6px" }}></span>
+            <p style={{ fontSize: "0.95rem", color: "var(--fg-muted)", lineHeight: "1.5" }}>Designing modular and scalable micro-frontend architectures with Module Federation.</p>
+          </div>
+          <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
+            <span className="status-indicator" style={{ marginTop: "6px" }}></span>
+            <p style={{ fontSize: "0.95rem", color: "var(--fg-muted)", lineHeight: "1.5" }}>Optimizing pages focusing on Core Web Vitals (LCP, INP, CLS) and SSR execution.</p>
+          </div>
+          <div style={{ display: "flex", gap: "0.75rem", alignItems: "flex-start" }}>
+            <span className="status-indicator" style={{ marginTop: "6px" }}></span>
+            <p style={{ fontSize: "0.95rem", color: "var(--fg-muted)", lineHeight: "1.5" }}>Building decoupled UI component libraries for fast feature rollouts.</p>
+          </div>
+        </div>
       </div>
     </section>
   );

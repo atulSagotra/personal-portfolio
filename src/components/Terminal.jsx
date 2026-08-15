@@ -8,14 +8,11 @@ export default function Terminal() {
     { type: "output", text: "Type 'help' to review available commands." },
   ]);
   const [input, setInput] = useState("");
-  const terminalBodyRef = useRef(null);
+  const terminalEndRef = useRef(null);
   const inputRef = useRef(null);
 
   useEffect(() => {
-    const el = terminalBodyRef.current;
-    if (el) {
-      el.scrollTop = el.scrollHeight;
-    }
+    terminalEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [history]);
 
   const focusInput = () => {
@@ -77,7 +74,7 @@ export default function Terminal() {
   };
 
   return (
-    <section className="terminal-section scroll-reveal" style={{ padding: "4rem 0" }}>
+    <section className="terminal-section scroll-reveal" style={{ padding: "3rem 0" }}>
       <div 
         onClick={focusInput}
         className="glass-card"
@@ -119,7 +116,6 @@ export default function Terminal() {
         
         {/* Terminal Body */}
         <div 
-          ref={terminalBodyRef}
           style={{
             padding: "1.75rem",
             fontFamily: "var(--font-mono)",
@@ -169,6 +165,7 @@ export default function Terminal() {
               aria-label="Terminal input"
             />
           </div>
+          <div ref={terminalEndRef} />
         </div>
       </div>
     </section>

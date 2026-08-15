@@ -20,13 +20,10 @@ export default function ClientAuditor() {
   ]);
   const [input, setInput] = useState("");
   const [isTyping, setIsTyping] = useState(false);
-  const chatBodyRef = useRef(null);
+  const messagesEndRef = useRef(null);
 
   useEffect(() => {
-    const el = chatBodyRef.current;
-    if (el) {
-      el.scrollTop = el.scrollHeight;
-    }
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" });
   }, [messages, isTyping]);
 
   const handleSend = (textToSend) => {
@@ -122,7 +119,7 @@ Key achievements:
   };
 
   return (
-    <section id="ai-auditor" className="scroll-reveal" style={{ padding: "6rem 0" }}>
+    <section id="ai-auditor" className="scroll-reveal" style={{ padding: "3.5rem 0" }}>
       
       {/* Header */}
       <div style={{ textAlign: "left", marginBottom: "4rem" }}>
@@ -151,7 +148,7 @@ Key achievements:
                 disabled={isTyping}
                 style={{
                   background: "transparent",
-                  border: "1px solid rgba(255, 255, 255, 0.12)",
+                  border: "1px solid var(--btn-secondary-border)",
                   borderRadius: "2px",
                   padding: "0.6rem 1.1rem",
                   fontSize: "0.72rem",
@@ -199,10 +196,7 @@ Key achievements:
           </div>
 
           {/* Messages Console */}
-          <div 
-            ref={chatBodyRef}
-            style={{ flexGrow: 1, overflowY: "auto", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "1.25rem", background: "var(--bg-color)" }}
-          >
+          <div style={{ flexGrow: 1, overflowY: "auto", padding: "1.5rem", display: "flex", flexDirection: "column", gap: "1.25rem", background: "var(--bg-color)" }}>
             {messages.map((m, idx) => (
               <div key={idx} style={{
                 alignSelf: m.sender === "user" ? "flex-end" : "flex-start",
@@ -251,6 +245,7 @@ Key achievements:
                 <span className="typing-dot" style={{ width: "3px", height: "3px", background: "var(--fg-color)", borderRadius: "50%", display: "inline-block", animation: "bounce 1.4s infinite ease-in-out 0.4s" }}></span>
               </div>
             )}
+            <div ref={messagesEndRef} />
           </div>
 
           {/* Input Area */}
@@ -302,9 +297,9 @@ Key achievements:
           40% { transform: scale(1.0); }
         }
         .quick-prompt-btn:hover {
-          background: rgba(255, 255, 255, 0.04) !important;
-          border-color: #ffffff !important;
-          color: #ffffff !important;
+          background: var(--btn-secondary-hover-bg) !important;
+          border-color: var(--primary-color) !important;
+          color: var(--fg-color) !important;
         }
       `}</style>
     </section>

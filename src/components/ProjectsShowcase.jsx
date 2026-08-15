@@ -92,7 +92,7 @@ export default function ProjectsShowcase() {
   }, [selectedProject]);
 
   return (
-    <section id="projects" className="scroll-reveal" style={{ padding: "6rem 0 3rem 0" }}>
+    <section id="projects" className="scroll-reveal" style={{ padding: "3.5rem 0 2rem 0" }}>
       
       {/* Section Header */}
       <div style={{ marginBottom: "3.5rem" }}>
