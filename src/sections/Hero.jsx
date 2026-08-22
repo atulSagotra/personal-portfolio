@@ -123,9 +123,8 @@ export default function Hero() {
             
             <Magnetic scale={0.3}>
               <a 
-                href="https://drive.google.com/file/d/1SMWUJuDXfYiwqEbUkrsMZKpY7z_vnVUD/view?usp=sharing" 
-                target="_blank" 
-                rel="noopener noreferrer" 
+                href="/resume.pdf" 
+                download="Atul_Sagotra_Resume.pdf"
                 className="btn btn-secondary"
                 style={{ display: "flex", alignItems: "center", gap: "8px" }}
               >
