@@ -412,7 +412,7 @@ h1, h2, h3, h4, h5, h6 {
   min-height: 70vh;
   display: flex;
   align-items: center;
-  padding-top: 80px;
+  padding: 140px 0 3rem 0;
 }
 
 .about-section, .experience-section, .skills-section, .contact-section {
@@ -543,12 +543,54 @@ h1, h2, h3, h4, h5, h6 {
   50% { border-color: var(--fg-color); }
 }
 
-/* Asymmetric Grid Layouts */
+/* Base Layout and Grid Classes */
+.hero-content {
+  display: grid;
+  grid-template-columns: 1.3fr 0.7fr;
+  gap: 4.5rem;
+  align-items: center;
+  width: 100%;
+}
+
 .asymmetric-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 4rem;
   align-items: flex-start;
+}
+
+.hero-title {
+  font-size: clamp(2.5rem, 8vw, 4.8rem);
+  font-weight: 800;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+}
+
+.about-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 4.5rem;
+  position: relative;
+}
+
+.experience-menu {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  border-right: 1px solid var(--card-border);
+  padding-right: 2.5rem;
+}
+
+.experience-desc-mobile {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1.5rem;
 }
 
 /* Vertical section tracking indicators */
@@ -573,6 +615,12 @@ body:has(.project-drawer-overlay) .vertical-nav {
 .vertical-nav a:hover {
   opacity: 1 !important;
   transform: translateX(-4px);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
 }
 
 /* Form Styles */
@@ -632,6 +680,10 @@ body:has(.project-drawer-overlay) .vertical-nav {
     display: none !important;
   }
   
+  .sandbox-hud {
+    display: none !important;
+  }
+  
   .asymmetric-grid {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -653,6 +705,24 @@ body:has(.project-drawer-overlay) .vertical-nav {
   
   .hero-socials {
     justify-content: center;
+  }
+  
+  .about-cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .experience-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .experience-menu {
+    border-right: none;
+    padding-right: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2rem;
   }
   
   .contact-container {
@@ -687,6 +757,11 @@ body:has(.project-drawer-overlay) .vertical-nav {
     gap: 0;
   }
   
+  .experience-desc-mobile {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
   .hero-title {
     font-size: 2.8rem;
   }
@@ -694,10 +769,23 @@ body:has(.project-drawer-overlay) .vertical-nav {
   .hero-subtitle {
     font-size: 1.5rem;
   }
+  
+  .hero-section {
+    padding: 100px 0 2rem 0;
+  }
+  
+  main {
+    padding: 0 1rem 4rem 1rem;
+  }
 }
 
 /* Page Scale-Down Depth Effect when drawer is active */
 main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 2rem 8rem 2rem;
+  position: relative;
+  z-index: 1;
   transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s ease, filter 0.6s ease;
   transform-origin: center left;
 }

@@ -81,7 +81,7 @@ export default function SandboxHUD() {
 
   if (isMinimized) {
     return (
-      <div style={{ position: "fixed", bottom: "1.25rem", left: "1.25rem", zIndex: 999 }}>
+      <div className="sandbox-hud" style={{ position: "fixed", bottom: "1.25rem", left: "1.25rem", zIndex: 999 }}>
         <Magnetic scale={0.2}>
           <button
             onClick={() => setIsMinimized(false)}
@@ -111,7 +111,7 @@ export default function SandboxHUD() {
 
   return (
     <div
-      className="glass-card"
+      className="glass-card sandbox-hud"
       style={{
         position: "fixed",
         bottom: "1.25rem",

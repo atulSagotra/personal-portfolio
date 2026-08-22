@@ -121,10 +121,10 @@ export default function Experience() {
         <h3 style={{ fontSize: "2.8rem", fontWeight: "800", color: "var(--fg-color)", letterSpacing: "-0.02em" }}>Selected Work.</h3>
       </div>
 
-      <div style={{ display: "grid", gridTemplateColumns: "0.7fr 1.3fr", gap: "4.5rem", position: "relative" }} className="asymmetric-grid">
+      <div className="experience-grid">
         
         {/* Left Column: Spotlight Menu */}
-        <div style={{ display: "flex", flexDirection: "column", gap: "1.75rem", borderRight: "1px solid var(--card-border)", paddingRight: "2.5rem" }}>
+        <div className="experience-menu">
           {experiences.map((exp, idx) => {
             const isActive = activeIndex === idx;
             return (
@@ -198,7 +198,7 @@ export default function Experience() {
             {/* key deliverables list */}
             <div style={{ display: "flex", flexDirection: "column", gap: "1.5rem" }}>
               {activeExp.responsibilities.map((resp, rIdx) => (
-                <div key={rIdx} style={{ display: "grid", gridTemplateColumns: "140px 1fr", gap: "1.5rem" }} className="experience-desc-mobile">
+                <div key={rIdx} className="experience-desc-mobile">
                   <span style={{ fontSize: "0.72rem", fontFamily: "var(--font-mono)", color: "var(--primary-color)", textTransform: "uppercase", letterSpacing: "0.08em", fontWeight: "600", marginTop: "0.25rem" }}>
                     // {resp.title}
                   </span>

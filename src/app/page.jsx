@@ -141,7 +141,7 @@ export default function Home() {
         <a href="#contact" style={{ fontSize: "0.68rem", fontFamily: "var(--font-mono)", color: "#ffffff", opacity: 0.5, letterSpacing: "0.05em", textDecoration: "none" }}>05 / TALK</a>
       </div>
 
-      <main style={{ maxWidth: "980px", margin: "0 auto", padding: "0 2rem 8rem 2rem", position: "relative", zIndex: 1 }}>
+      <main>
         <Hero />
         <ClientAuditor />
         <ProjectsShowcase />

@@ -85,8 +85,8 @@ export default function Hero() {
   };
 
   return (
-    <section id="home" className="hero-section" style={{ position: "relative", minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center", padding: "3rem 0 1.5rem 0" }}>
-      <div className="hero-content" style={{ display: "grid", gridTemplateColumns: "1.3fr 0.7fr", gap: "4.5rem", alignItems: "center", width: "100%" }}>
+    <section id="home" className="hero-section" style={{ position: "relative", minHeight: "70vh", display: "flex", alignItems: "center", justifyContent: "center" }}>
+      <div className="hero-content">
         
         {/* Left Column: Typography & Bio */}
         <div className="hero-text-block" style={{ textAlign: "left" }}>
@@ -98,7 +98,7 @@ export default function Hero() {
           </div>
           
           {/* Main Large Typography */}
-          <h1 className="track-expand" style={{ color: "var(--fg-color)", fontSize: "4.8rem", fontWeight: "800", lineHeight: "1.05", marginBottom: "1.5rem" }}>
+          <h1 className="track-expand hero-title" style={{ color: "var(--fg-color)" }}>
             Atul Sagotra.
           </h1>
           
