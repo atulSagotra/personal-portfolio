@@ -161,7 +161,7 @@ export default function Contact() {
               <label htmlFor="name" className="form-label">Full Name</label>
             </div>
 
-            <div className="form-row" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
+            <div className="form-row">
               <div className="form-group">
                 <input
                   required

@@ -86,7 +86,7 @@ export default function About() {
         </div>
 
         {/* Right Column: Visual Skill Cards */}
-        <div className="about-cards-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.5rem" }}>
+        <div className="about-cards-grid">
           {cards.map((card, idx) => (
             <div 
               key={idx} 
